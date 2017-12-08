@@ -1,3 +1,4 @@
+//Author: Abdullah Baron
 #include<iostream>
 #include<string>
 #include<fstream>
@@ -8,18 +9,18 @@ class board {
 
         private :
                 int number;
-                int snakehead [10];
-                int snaketail [10];
-                int ladderstart [10];
-                int ladderend [10];
-                int snakenumber;
-                int laddernumber;
+                int snakeHead [10];
+                int snakeTail [10];
+                int ladderStart [10];
+                int ladderEnd [10];
+                int snakeNumber;
+                int ladderNumber;
 
 
         public :
-                void printboard();
-                void fillboard(int  , int ,int [],int [], int [], int []);
-                void updatetable();
+                void printBoard();
+                void fillBoard(int  , int ,int [],int [], int [], int []);
+                void updateTable();
 
 
 };
