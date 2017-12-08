@@ -1,3 +1,4 @@
+//Author: Abdullah Baron
 #include<iostream>
 #include<string>
 #include<fstream>
@@ -6,28 +7,28 @@
 using namespace std;
 
 // Function to Fill the Board
-void board::fillboard(int snakes,int ladders, int snakeh[10],int snaket[10],int ladderb[10], int laddert[10])
+void board::fillBoard(int snakes,int ladders, int snakeh[10],int snaket[10],int ladderb[10], int laddert[10])
 {
-        snakenumber = snakes;
-        laddernumber = ladders;
+        snakeNumber = snakes;
+        ladderNumber = ladders;
 
 
         for(int i = 0;i<snakes;i++)
         {
-                snakehead[i] = snakeh[i];
-                snaketail[i] = snaket[i];
+                snakeHead[i] = snakeh[i];
+                snakeTail[i] = snaket[i];
         }
         for(int i = 0;i<ladders;i++)
         {
-                ladderstart[i] = ladderb[i];
-                ladderend[i] = laddert[i];
+                ladderStart[i] = ladderb[i];
+                ladderEnd[i] = laddert[i];
         }
 
 
 }
 // Function to print the board to terminal  
 
-void board::printboard()
+void board::printBoard()
 {
         int num;
         int count = 0;
@@ -39,9 +40,9 @@ void board::printboard()
                         num = (j+1) + (i*10);
                         count = 0;
 
-                        for(int k = 0;k<snakenumber;k++)
+                        for(int k = 0;k<snakeNumber;k++)
                         {
-                                if(snakehead[k] == num)
+                                if(snakeHead[k] == num)
                                 {
 
                                         cout << " SH";
@@ -49,9 +50,9 @@ void board::printboard()
                                 }
 
                         }
-                        for(int k = 0;k<laddernumber;k++)
+                        for(int k = 0;k<ladderNumber;k++)
                         {
-                                if(ladderstart[k] == num)
+                                if(ladderStart[k] == num)
                                 {
 
                                         if(num > 9)
