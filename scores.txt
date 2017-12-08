@@ -4,3 +4,6 @@ abdullah - Time : 16 Seconds
 Computer - Time : 9 Seconds
 1 - Time : 4 Seconds
 abdullah - Time : 4 Seconds
+Computer - Time : 45 Seconds
+abdullah - Time : 53 Seconds
+abdullah - Time : 34 Seconds
