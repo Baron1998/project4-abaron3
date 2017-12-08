@@ -9,30 +9,30 @@ using namespace std;
 
 void randomizer(int &, int &, int (&)[10] , int (&)[10] , int (&)[10], int (&)[10]);
 int roll ();
-void printmsg();
+void printMsg();
 int main()
 {
 
-        int snakehead[10];
-        int snaketail[10];
-        int ladderbottom[10];
-        int laddertop[10];
+        int snakeHead[10];
+        int snakeTail[10];
+        int ladderBottom[10];
+        int ladderTop[10];
         int snakes;
         int ladders;
-        int playerpos = 0;
-        int computerpos = 0;
+        int playerPos = 0;
+        int computerPos = 0;
         int win = 0;
         string winner;
         string input;
         int num;
         // Call randomizer function to randomly assign snakes and ladders to different positions in the board
-        randomizer(snakes,ladders,snakehead,snaketail,ladderbottom,laddertop);
+        randomizer(snakes,ladders,snakeHead,snakeTail,ladderBottom,ladderTop);
         // Create an Instance of the class
-        board gameboard;
+        board gameBoard;
         // Fill the board with snakes and ladders
-        gameboard.fillboard(snakes,ladders,snakehead,snaketail,ladderbottom,laddertop);
+        gameBoard.fillBoard(snakes,ladders,snakeHead,snakeTail,ladderBottom,ladderTop);
         // Print Welcome message function
-        printmsg();
+        printMsg();
         int time1 = 0;
         int time2 = 0;
         // Record the time
@@ -42,7 +42,7 @@ int main()
 
                 cout <<endl << "SH : Snake Head" << endl ;
                 cout <<endl << "LS : Ladder Start" << endl << endl;
-                gameboard.printboard();
+                gameBoard.printBoard();
                 cout << endl << endl;
                 cout <<"Enter '1' to Roll : ";
                 cin >> input;
@@ -54,15 +54,15 @@ int main()
                         num = roll();
                         cout <<"You Rolled : "<<num << endl;
                         // update the player position accordng to the number rolled
-                        playerpos = playerpos + num ;
+                        playerPos = playerPos + num ;
                         // If the player position is a snake , find the snake tail 
                         // relating to it and update the position
                         for(int i = 0;i<snakes;i++)
                         {
-                                if(playerpos == snakehead[i])
+                                if(playerPos == snakeHead[i])
                                 {
-                                        playerpos = snaketail[i];
-                                        cout <<"You got Caught to a Snake , New position is : "<<playerpos  << endl;
+                                        playerPos = snakeTail[i];
+                                        cout <<"You got Caught to a Snake , New position is : "<<playerPos  << endl;
 
                                 }
                         }
@@ -70,17 +70,17 @@ int main()
                         // ladder top position and update position 
                         for(int i = 0;i<ladders;i++)
                         {
-                                if(playerpos == ladderbottom[i])
+                                if(playerPos == ladderBottom[i])
                                 {
-                                        playerpos = laddertop[i];
-                                        cout <<"Congrats , You found a ladder , your New position is : "<<playerpos  << endl;
+                                        playerPos = ladderTop[i];
+                                        cout <<"Congrats , You found a ladder , your New position is : "<<playerPos  << endl;
 
                                 }
 
                         }
                         // If the position = 100 or greater, the player wins
 
-                        if(playerpos >= 100)
+                        if(playerPos >= 100)
                         {
                                 // record the end time so the playing time can be calculated
                                 cout <<"Congratulations , You won !" << endl;
@@ -94,33 +94,33 @@ int main()
                         }
                         else
                         {
-                                cout <<"Your Position is : "<<playerpos << endl;
+                                cout <<"Your Position is : "<<playerPos << endl;
                         }
 
                         // Do the Same process with the computer 
                         num = roll();
                         cout <<"Computer Rolled : "<<num << endl;
-                        computerpos = computerpos + num ;
+                        computerPos = computerPos + num ;
                         for(int i = 0;i<snakes;i++)
                         {
-                                if(computerpos == snakehead[i])
+                                if(computerPos == snakeHead[i])
                                 {
-                                        computerpos = snaketail[i];
-                                        cout <<"The computer Got caught to a Snake , Its new position Is : "<<computerpos   << endl;
+                                        computerPos = snakeTail[i];
+                                        cout <<"The computer Got caught to a Snake , Its new position Is : "<<computerPos   << endl;
 
                                 }
                         }
                         for(int i = 0;i<ladders;i++)
                         {
-                                if(computerpos  == ladderbottom[i])
+                                if(computerPos  == ladderBottom[i])
                                 {
-                                        computerpos  = laddertop[i];
-                                        cout <<"The computer found a ladder, Its new position is : "<<computerpos   << endl;
+                                        computerPos  = ladderTop[i];
+                                        cout <<"The computer found a ladder, Its new position is : "<<computerPos   << endl;
 
                                 }
 
                         }
-                        if(computerpos >= 100)
+                        if(computerPos >= 100)
                         {
 
                                 cout <<"Too Bad !! The computer Won" << endl;
@@ -131,7 +131,7 @@ int main()
                         }
                         else
                         {
-                                cout <<"The Computers position is : "<<computerpos << endl;
+                                cout <<"The Computers position is : "<<computerPos << endl;
                         }
 
 
@@ -152,7 +152,7 @@ int main()
         return 0 ;
 }
 
-void printmsg()
+void printMsg()
 {
 
         cout <<"Hello , Welcome to Snake And Ladders Game , You can Enter '1' to Roll and Then The Computer Will also Roll" << endl;
@@ -167,11 +167,11 @@ int roll()
 }
 
 
-void randomizer(int &snakeno , int &ladderno ,int (&snakeh)[10],int (&snaket)[10], int (&ladders)[10], int (&laddere)[10])
+void randomizer(int &snakeNo , int &ladderNo ,int (&snakeh)[10],int (&snaket)[10], int (&ladders)[10], int (&laddere)[10])
 {
         srand(time(NULL));
-        int numsnakes ;
-        int numladders ;
+        int numSnakes ;
+        int numLadders ;
         int rand1;
         int rand2;
         int again = 0;
@@ -179,13 +179,13 @@ void randomizer(int &snakeno , int &ladderno ,int (&snakeh)[10],int (&snaket)[10
         int index =0;
         int index2 = 0;
         // Randomly choose how many snakes and ladders in the board
-        numsnakes = rand() % 6 + 1;
-        numladders = rand() % 6 + 1;
-        snakeno = numsnakes;
-        ladderno = numladders;
+        numSnakes = rand() % 6 + 1;
+        numLadders = rand() % 6 + 1;
+        snakeNo = numSnakes;
+        ladderNo = numLadders;
         srand(time(NULL));
         // Randomly choose which positions in the board will the snakes be
-        for(int i= 0;i<numsnakes;i++)
+        for(int i= 0;i<numSnakes;i++)
 
         {
 
@@ -223,7 +223,7 @@ void randomizer(int &snakeno , int &ladderno ,int (&snakeh)[10],int (&snaket)[10
 
         }
         // Do the Same for ladders
-        for(int i = 0;i<numladders ; i++)
+        for(int i = 0;i<numLadders ; i++)
         {
                 do
                 {
@@ -246,16 +246,16 @@ void randomizer(int &snakeno , int &ladderno ,int (&snakeh)[10],int (&snaket)[10
 
                                 }
                         }
-                        if(numsnakes > numladders)
+                        if(numSnakes > numLadders)
                         {
-                                index  = numsnakes;   
+                                index  = numSnakes;   
                         }
                         else 
                         {
-                                index = numladders;
+                                index = numLadders;
                         }
 
-                        for(int j = 0;j<numsnakes;j++)
+                        for(int j = 0;j<numSnakes;j++)
                         {
                                 if((snakeh[j] == rand1) || (snaket[j] == rand2) || (snakeh[j] == rand2) || (snaket[j] == rand1))
                                 {
